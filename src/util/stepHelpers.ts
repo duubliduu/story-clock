@@ -8,41 +8,41 @@ export const steps: StoryStep[] = [
   {
     label: "AfterMath",
     at: 100,
-    description: "it's all over",
+    description: "Show how they changed the Status Quo.",
   },
   {
     label: "Climax",
     at: 90,
-    description: "By the skin of their teeth they manage to fulfill the ",
+    description: "Final push, Do or die! Revelation.",
   },
   {
     at: 75,
     label: "Lowest Point!",
     description:
-      "All is seemingly lost, the big fear they wer fighting for is now full filling",
+      "The Big Threat has come to pass!",
   },
   {
     at: 50,
     label: "Midpoint",
-    description: "Lock, in, twist! The big fear is going to start.",
+    description: "Locked in! Twist! The Big Threat is real, start a timer!",
   },
   {
     at: 25,
-    label: "Plot point 1",
+    label: "Departure",
     description:
-      "Start their journey! Enter the special world! Accept the call. Obstacles, test and trials.",
+      "Pass the threshold to the special world. Obstacles, test and trials. Hints of the Big Threat.",
   },
   {
     at: 10,
     label: "Call to Action",
     description:
-      "Someone gets and OPPORTUNITY for fulfill their need, but they lack the COURAGE. Figure out their motivations to do something about it. You need to do this. Warning about this can possibility happen(big fear)",
+      "Introduce an opportunity to achieve their desire, but there's an Opponent. Rumours about the Big Threat. Character's struggle with their courage to take the opportunity. What's the plan?",
   },
   {
     at: 0,
     label: "Opening shot!",
     description:
-      "Introduce the characters middle of their day-to-day. someone has NEED",
+      "Opening Action! Introduce the characters(Weakness, Desire and Fear) in the Status Quo.",
   },
 ];
 

@@ -2,7 +2,6 @@ import Head from "next/head";
 import Clock from "@/components/clock/Clock";
 import React, { ChangeEventHandler, useContext, useState } from "react";
 import CurrentStep from "@/components/currentStep/CurrentStep";
-import useProgress from "@/hooks/useProgress";
 import { timeContext } from "@/context/TimeContext";
 
 export default function Home() {
@@ -20,8 +19,6 @@ export default function Home() {
   ) => {
     setDuration(event.target.value);
   };
-
-  const progress = useProgress(startTime, duration);
 
   return (
     <>
@@ -54,8 +51,8 @@ export default function Home() {
             </div>
           </section>
           <section className="px-4 py-4">
-            <Clock progress={progress}>
-              <CurrentStep progress={progress} />
+            <Clock>
+              <CurrentStep />
             </Clock>
           </section>
         </div>

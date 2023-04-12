@@ -1,12 +1,22 @@
-import { FunctionComponent, PropsWithChildren, useEffect, useRef } from "react";
+import {
+  FunctionComponent,
+  PropsWithChildren,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import styles from "./Clock.module.css";
+import { timeContext } from "@/context/TimeContext";
+import useProgress from "@/hooks/useProgress";
 
-type ClockProps = PropsWithChildren<{
-  progress: number;
-}>;
+type ClockProps = PropsWithChildren<{}>;
 
-const Clock: FunctionComponent<ClockProps> = ({ progress, children }) => {
+const Clock: FunctionComponent<ClockProps> = ({ children }) => {
   const clockRef = useRef<HTMLDivElement>(null);
+
+  const { startTime, duration } = useContext(timeContext);
+
+  const progress = useProgress(startTime, duration);
 
   useEffect(() => {
     if (clockRef.current) {

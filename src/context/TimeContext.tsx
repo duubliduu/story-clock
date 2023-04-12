@@ -16,8 +16,8 @@ export const TimeContextProvider: FunctionComponent<PropsWithChildren<{}>> = ({
   children,
 }) => {
   const [data, setData] = useState({
-    startTime: "12:00",
-    duration: "2:00",
+    startTime: "15:00",
+    duration: "04:00",
   });
 
   const setStartTime = (startTime: string) => {

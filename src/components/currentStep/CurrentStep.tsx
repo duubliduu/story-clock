@@ -2,15 +2,12 @@ import React, { FunctionComponent, useContext } from "react";
 import { getSeconds, timeToSeconds } from "@/util/timeHelpers";
 import { timeContext } from "@/context/TimeContext";
 import { findStep, StoryStep } from "@/util/stepHelpers";
-
-type CurrentStepProps = {
-  progress: number;
-};
+import useProgress from "@/hooks/useProgress";
 
 enum Status {
-  NOT_STARTED = "The game will start in...",
-  IN_PROGRESS = "The game is in progress",
-  OVER = "The game has ended",
+  NOT_STARTED = "Will start in...",
+  IN_PROGRESS = "In progress",
+  OVER = "Has ended",
 }
 
 const getStatus = (progress: number) => {
@@ -23,8 +20,10 @@ const getStatus = (progress: number) => {
   return Status.IN_PROGRESS;
 };
 
-const CurrentStep: FunctionComponent<CurrentStepProps> = ({ progress }) => {
-  const { startTime } = useContext(timeContext);
+const CurrentStep: FunctionComponent = () => {
+  const { startTime, duration } = useContext(timeContext);
+
+  const progress = useProgress(startTime, duration);
 
   const status = getStatus(progress);
 
@@ -37,24 +36,37 @@ const CurrentStep: FunctionComponent<CurrentStepProps> = ({ progress }) => {
   const [currentStep, nextStep] = findStep(progress);
 
   return (
-    <div className="text-center">
-      <p className="font-light text-xl">{status}</p>
+    <div className="text-center max-w-xs sm:max-w-md">
+      <p className="font-light text-md sm:text-xl">{status}</p>
       {status === Status.IN_PROGRESS && (
-        <p className="center text-8xl text-green-700 font-light">{progress}</p>
+        <p className="center text-6xl sm:text-8xl text-green-700 font-light">
+          {progress}
+        </p>
       )}
       {status === Status.NOT_STARTED && (
-        <p className="center text-8xl text-green-700 font-light">
+        <p className="center text-6xl sm:text-8xl text-green-700 font-light">
           {startsIn} HOURS
         </p>
       )}
       {status === Status.OVER && (
-        <p className="center text-8xl text-green-700 font-light">OVER</p>
+        <p className="center text-6xl sm:text-8xl text-green-700 font-light">
+          OVER
+        </p>
       )}
-      <p className="font-bold text-xl">
-        {currentStep.label}
-        {nextStep && ` to ${nextStep.label}`}
-      </p>
-      <p className="font-normal">{currentStep.description}</p>
+      {progress >= 0 && (
+        <>
+          <p className="text-md sm:text-xl">
+            <span className="font-bold">{currentStep.label}</span>
+            {nextStep && (
+              <>
+                &nbsp;to&nbsp;
+                <span className="font-bold">{nextStep.label}</span>
+              </>
+            )}
+          </p>
+          <p className="text-xs sm:text-base">{currentStep.description}</p>
+        </>
+      )}
     </div>
   );
 };
