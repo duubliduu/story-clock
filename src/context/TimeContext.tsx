@@ -4,6 +4,7 @@ import {
   PropsWithChildren,
   useState,
 } from "react";
+import { useLocalStorage } from "react-use";
 
 export const timeContext = createContext({
   startTime: "",
@@ -15,24 +16,24 @@ export const timeContext = createContext({
 export const TimeContextProvider: FunctionComponent<PropsWithChildren<{}>> = ({
   children,
 }) => {
-  const [data, setData] = useState({
-    startTime: "15:00",
+  const [data, setData] = useLocalStorage("data", {
+    startTime: `${new Date().getHours()}:${new Date().getMinutes()}`,
     duration: "04:00",
   });
 
   const setStartTime = (startTime: string) => {
-    setData((state) => ({ ...state, startTime }));
+    setData({ duration: data?.duration || "", startTime });
   };
 
   const setDuration = (duration: string) => {
-    setData((state) => ({ ...state, duration }));
+    setData({ startTime: data?.startTime || "", duration });
   };
 
   return (
     <timeContext.Provider
       value={{
-        startTime: data.startTime,
-        duration: data.duration,
+        startTime: data?.startTime || "",
+        duration: data?.duration || "",
         setStartTime,
         setDuration,
       }}

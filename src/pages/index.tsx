@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Clock from "@/components/clock/Clock";
-import React, { ChangeEventHandler, useContext, useState } from "react";
+import React, { ChangeEventHandler, useContext } from "react";
 import CurrentStep from "@/components/currentStep/CurrentStep";
 import { timeContext } from "@/context/TimeContext";
 
