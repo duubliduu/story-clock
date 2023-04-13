@@ -28,7 +28,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="w-full relative max-h-screen max-w-screen-md">
+      <main className="relative max-h-screen max-w-screen-md mx-auto">
         <div className="px-4 py-4">
           <section className="px-4 py-4">
             <div className="flex place-content-between">
