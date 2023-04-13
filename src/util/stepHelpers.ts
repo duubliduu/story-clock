@@ -6,20 +6,15 @@ export type StoryStep = {
 
 export const steps: StoryStep[] = [
   {
-    label: "AfterMath",
-    at: 100,
-    description: "Show how they changed the Status Quo.",
-  },
-  {
     label: "Climax",
     at: 90,
-    description: "Final push, Do or die! Revelation.",
+    description: "How did you change the Status Quo.",
   },
   {
     at: 75,
     label: "Lowest Point!",
     description:
-      "The Big Threat has come to pass!",
+      "Final push, Do or die! Revelation. The Big Threat has come to pass!",
   },
   {
     at: 50,
