@@ -27,6 +27,7 @@ const Clock: FunctionComponent<ClockProps> = ({ children }) => {
   return (
     <div className="relative aspect-square">
       <div className={styles.clock} ref={clockRef}></div>
+      <div className={styles.rotator}></div>
       <div className="w-full h-full top-0 absolute flex justify-center items-center">
         <div>{children}</div>
       </div>
