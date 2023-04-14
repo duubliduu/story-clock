@@ -9,9 +9,8 @@ const useProgress = (startTime: string, duration: string) => {
       const nowSeconds = getSeconds();
       const startSeconds = timeToSeconds(startTime);
       const durationSeconds = timeToSeconds(duration);
-      const currentProgress = Math.round(
-        ((nowSeconds - startSeconds) / durationSeconds) * 100
-      );
+      const currentProgress =
+        ((nowSeconds - startSeconds) / durationSeconds) * 100;
       setProgress(currentProgress);
     }, 1000);
 
